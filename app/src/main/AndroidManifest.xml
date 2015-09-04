@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ark.viauc.mobi.firstapp" >
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -27,6 +29,14 @@
         <activity
             android:name=".AboutActivity"
             android:label="@string/title_activity_about"
+            android:parentActivityName=".Intro" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ark.viauc.mobi.firstapp.Intro" />
+        </activity>
+        <activity
+            android:name=".BrowserActivity"
+            android:label="@string/title_activity_browser"
             android:parentActivityName=".Intro" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

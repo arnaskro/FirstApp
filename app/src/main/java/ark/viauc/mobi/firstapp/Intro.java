@@ -74,7 +74,11 @@ public class Intro extends Activity {
             public void onClick(View v) {
                 Log.d(TAG, "Browser button clicked");
 
+                // Create explicit intent
+                Intent inBrowser = new Intent(Intro.this, BrowserActivity.class);
 
+                // Launch intent
+                startActivity(inBrowser);
             }
         });
 
