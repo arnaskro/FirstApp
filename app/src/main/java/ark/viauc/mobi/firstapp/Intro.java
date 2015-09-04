@@ -84,7 +84,11 @@ public class Intro extends Activity {
             public void onClick(View v) {
                 Log.d(TAG, "About button clicked");
 
+                // Create explicit intent
+                Intent inAbout = new Intent(Intro.this, AboutActivity.class);
 
+                // Launch intent
+                startActivity(inAbout);
             }
         });
 
