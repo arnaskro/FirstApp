@@ -1,0 +1,72 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" tools:context=".Intro"
+    android:layout_gravity="bottom"
+    android:background="@drawable/landscape">
+
+
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" tools:context=".Intro"
+    android:layout_gravity="center_horizontal|bottom"
+    android:layout_alignParentBottom="true"
+    android:layout_centerHorizontal="true"
+    android:id="@+id/tableLayout">
+
+    <TableRow>
+
+        <Button
+            android:layout_width="@dimen/button_width"
+            android:layout_height="fill_parent"
+            android:textColor="@android:color/white"
+            android:text="Mail"
+            android:layout_margin="@dimen/button_margin"
+            android:id="@+id/mail_button"/>
+
+        <Button
+            android:layout_width="@dimen/button_width"
+            android:layout_height="fill_parent"
+            android:textColor="@android:color/white"
+            android:text="Browser"
+            android:layout_margin="@dimen/button_margin"
+            android:id="@+id/browser_button"/>
+
+        <Button
+            android:layout_width="@dimen/button_width"
+            android:layout_height="fill_parent"
+            android:textColor="@android:color/white"
+            android:text="Options"
+            android:layout_margin="@dimen/button_margin"
+            android:id="@+id/options_button"/>
+    </TableRow>
+
+    <TableRow>
+        <Button
+            android:layout_width="@dimen/button_width"
+            android:layout_height="fill_parent"
+            android:textColor="@android:color/white"
+            android:text="About"
+            android:layout_margin="@dimen/button_margin"
+            android:id="@+id/about_button" />
+
+        <Button
+            android:layout_width="@dimen/button_width"
+            android:layout_height="fill_parent"
+            android:textColor="@android:color/white"
+            android:text="Quit"
+            android:layout_margin="@dimen/button_margin"
+            android:id="@+id/quit_button"/>
+
+        <TextView
+            android:layout_width="@dimen/button_width"
+            android:layout_height="fill_parent"
+            android:text="v 1.0"
+            android:textColor="@android:color/white"
+            android:gravity="bottom|right" />
+    </TableRow>
+
+</TableLayout>
+    </RelativeLayout>

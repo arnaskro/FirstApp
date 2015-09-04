@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Flat Blue -->
+    <color name="blue_pressed">@android:color/holo_blue_dark</color>
+    <color name="blue_normal">@android:color/holo_blue_light</color>
+
+    <!-- Flat Green -->
+    <color name="green_pressed">@android:color/holo_green_dark</color>
+    <color name="green_normal">@android:color/holo_green_light</color>
+
+    <!-- Flat Orange -->
+    <color name="orange_pressed">@android:color/holo_orange_dark</color>
+    <color name="orange_normal">@android:color/holo_orange_light</color>
+
+    <!-- Flat Red -->
+    <color name="red_pressed">@android:color/holo_red_dark</color>
+    <color name="red_normal">@android:color/holo_red_light</color>
+
+
+</resources>
