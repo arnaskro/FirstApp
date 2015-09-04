@@ -1,7 +1,9 @@
 package ark.viauc.mobi.firstapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.*;
@@ -44,6 +46,22 @@ public class BrowserActivity extends Activity {
         // Setup web view
         setupWebView();
 
+        // Setup intent
+        setupIntent();
+    }
+
+    private void setupIntent() {
+        Intent anIntent = getIntent();
+        String action = anIntent.getAction();
+        Uri uri = anIntent.getData();
+
+        Log.i(Intro.TAG, "Action: " + action);
+        Log.i(Intro.TAG, "Type: " + uri);
+
+        if (uri != null) {
+            field.setText(uri.toString());
+            goToWebsite(uri.toString());
+        }
     }
 
     private void setupProgressBar() {
