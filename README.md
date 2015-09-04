@@ -1,9 +1,10 @@
 # FirstApp
 First Android application with basic funcionality.
 
-# Purpose
+### Purpose
 For learning purposes while studying.
 
-# Study info
+### Study info
 VIA University College
+
 MOBI1-Y-A15
