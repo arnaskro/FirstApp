@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class BrowserActivity extends Activity {
 
-    private static final String DEFAULT_SITE = "http://google.com";
+    private static final String DEFAULT_SITE = "http://kromelis.lt";
     private static String ACTIVE_COLOR;
     private WebView wv;
 
@@ -48,6 +48,13 @@ public class BrowserActivity extends Activity {
 
         // Setup intent
         setupIntent();
+
+
+        if (savedInstanceState == null) {
+            // Launch default site
+            goToWebsite(DEFAULT_SITE);
+        }
+
     }
 
     private void setupIntent() {
@@ -59,7 +66,6 @@ public class BrowserActivity extends Activity {
         Log.i(Intro.TAG, "Type: " + uri);
 
         if (uri != null) {
-            field.setText(uri.toString());
             goToWebsite(uri.toString());
         }
     }
@@ -78,7 +84,7 @@ public class BrowserActivity extends Activity {
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
                     String url = field.getText().toString();
 
-                    if(!(url.startsWith("http://")))
+                    if (!(url.startsWith("http://")))
                         goToWebsite("http://" + url);
                     else
                         goToWebsite(url);
@@ -117,6 +123,12 @@ public class BrowserActivity extends Activity {
             @Override
             public void onClick(View v) {
                 wv.goForward();
+
+                if (wv.canGoForward()) btnForward.setEnabled(true);
+                else btnForward.setEnabled(false);
+
+                if (wv.canGoBack()) btnBack.setEnabled(true);
+                else btnBack.setEnabled(false);
             }
         });
 
@@ -136,6 +148,8 @@ public class BrowserActivity extends Activity {
     }
 
     private void goToWebsite(String url) {
+
+        field.setText(url);
 
         Log.d(Intro.TAG, "**Request URL: " + url);
 
@@ -162,7 +176,7 @@ public class BrowserActivity extends Activity {
         grpButtons.add(btnReload);
         grpButtons.add(btnStop);
 
-        for (Button btn: grpButtons)
+        for (Button btn : grpButtons)
             changeButtonBackground(btn);
 
     }
@@ -173,25 +187,27 @@ public class BrowserActivity extends Activity {
         wv.setWebViewClient(new WebViewClient());
         wv.setWebChromeClient(new WebChromeClient());
 
-        field.setText(DEFAULT_SITE);
-        goToWebsite(field.getText().toString());
-
         wv.getSettings().setJavaScriptEnabled(true);
 
         wv.setWebChromeClient(new WebChromeClient() {
             public void onProgressChanged(WebView view, int progress) {
                 progressBar.setProgress(progress);
 
-                if((progressBar.getVisibility() == View.VISIBLE) && (progress == 0 || progress == 100)) {
+                if ((progressBar.getVisibility() == View.VISIBLE) && (progress == 0 || progress == 100)) {
                     progressBar.setVisibility(View.GONE);
                     btnReload.setVisibility(View.VISIBLE);
                     btnStop.setVisibility(View.GONE);
-                }
-                else if((progressBar.getVisibility() == View.GONE) && (progress > 0 && progress <= 100)) {
+                } else if ((progressBar.getVisibility() == View.GONE) && (progress > 0 && progress < 100)) {
                     progressBar.setVisibility(View.VISIBLE);
                     btnReload.setVisibility(View.GONE);
                     btnStop.setVisibility(View.VISIBLE);
                 }
+
+                if (wv.canGoForward()) btnForward.setEnabled(true);
+                else btnForward.setEnabled(false);
+
+                if (wv.canGoBack()) btnBack.setEnabled(true);
+                else btnBack.setEnabled(false);
             }
         });
 
@@ -204,6 +220,20 @@ public class BrowserActivity extends Activity {
             case Intro.COLOR_ORANGE: target.setBackgroundDrawable(getResources().getDrawable(R.drawable.orange_selector)); break;
             case Intro.COLOR_GREEN: target.setBackgroundDrawable(getResources().getDrawable(R.drawable.green_selector)); break;
         }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState )
+    {
+        super.onSaveInstanceState(outState);
+        wv.saveState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState)
+    {
+        super.onRestoreInstanceState(savedInstanceState);
+        wv.restoreState(savedInstanceState);
     }
 
 }

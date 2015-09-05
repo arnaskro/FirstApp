@@ -68,7 +68,21 @@ public class Intro extends Activity {
 
     private void setButtonListeners() {
 
-        // Button about
+        // Button mail
+        btnMail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "Mail button clicked");
+
+                // Create explicit intent
+                Intent inMail = new Intent(Intro.this, MailActivity.class);
+
+                // Launch intent
+                startActivity(inMail);
+            }
+        });
+
+        // Button browser
         btnBrowser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

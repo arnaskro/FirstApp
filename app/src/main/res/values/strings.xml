@@ -17,5 +17,6 @@
         <item>Red</item>
     </string-array>
     <string name="title_activity_browser">BrowserActivity</string>
+    <string name="title_activity_mail">MailActivity</string>
 
 </resources>

@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ark.viauc.mobi.firstapp" >
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -37,13 +37,37 @@
         <activity
             android:name=".BrowserActivity"
             android:label="@string/title_activity_browser"
+            android:parentActivityName=".Intro"
+            >
+
+            <!-- - Handle web browsing -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="http" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ark.viauc.mobi.firstapp.Intro" />
+        </activity>
+        <activity
+            android:name=".MailActivity"
+            android:label="@string/title_activity_mail"
             android:parentActivityName=".Intro" >
 
-            <!--- Handle web browsing -->
+            <!-- - Handle mail -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.SENDTO"/>
+                <data android:scheme="mailto"/>
                 <category android:name="android.intent.category.DEFAULT"/>
-                <data android:scheme="http"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+            </intent-filter>
+            <intent-filter android:label="@string/app_name">
+                <action android:name="android.intent.action.SEND"/>
+                <data android:mimeType="*/*"/>
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
 
             <meta-data
