@@ -18,3 +18,8 @@ MOBI1-Y-A15
   - History to go back or forward pages
   - Progress bar
   - Reload/Stop loading
+  - Implicit Intents
+* Mail Activity
+  - Send mail using the JavaMail API
+  - Check for a valid email
+ - Implicit Intents
