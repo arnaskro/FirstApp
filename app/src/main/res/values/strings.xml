@@ -23,7 +23,24 @@
         <item>Green</item>
         <item>Red</item>
     </string-array>
-    <string name="title_activity_browser">BrowserActivity</string>
-    <string name="title_activity_mail">MailActivity</string>
+    <string name="title_activity_browser">iBrowser</string>
+    <string name="title_activity_mail">iMail</string>
+    <string name="browser_back_button">Back</string>
+    <string name="history_back"><![CDATA[<]]></string>
+    <string name="history_forward"><![CDATA[>]]></string>
+    <string name="button_Reload">↺</string>
+    <string name="button_stopLoading">X</string>
+    <string name="go_back_text"><![CDATA[<< Go back to main menu]]></string>
+    <string name="go_Back_mail">Go back</string>
+    <string name="send_Button">Send</string>
+    <string name="hint_email">Enter email</string>
+    <string name="hint_subject">Enter subject</string>
+    <string name="hint_message">Enter message</string>
+    <string name="choose_color">Choose main color:</string>
+    <string name="btn_mail">Mail</string>
+    <string name="btn_browser">Browser</string>
+    <string name="btn_options">Options</string>
+    <string name="btn_about">About</string>
+    <string name="btn_quit">Quit</string>
 
 </resources>

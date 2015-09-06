@@ -7,6 +7,15 @@
     android:background="@drawable/portrait">
 
 
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="75dp"
+        android:background="@drawable/logo"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp" />
+
+
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
@@ -19,7 +28,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
-        android:text="Mail"
+        android:text="@string/btn_mail"
         android:layout_marginLeft="@dimen/button_margin"
         android:layout_marginRight="@dimen/button_margin"
         android:layout_marginBottom="@dimen/button_margin_bottom"
@@ -29,7 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:textColor="@android:color/white"
-        android:text="Browser"
+        android:text="@string/btn_browser"
         android:layout_marginLeft="@dimen/button_margin"
         android:layout_marginRight="@dimen/button_margin"
         android:layout_marginBottom="@dimen/button_margin_bottom"
@@ -40,7 +49,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:textColor="@android:color/white"
-        android:text="Options"
+        android:text="@string/btn_options"
         android:layout_marginLeft="@dimen/button_margin"
         android:layout_marginRight="@dimen/button_margin"
         android:layout_marginBottom="@dimen/button_margin_bottom"
@@ -51,7 +60,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:textColor="@android:color/white"
-        android:text="About"
+        android:text="@string/btn_about"
         android:layout_marginLeft="@dimen/button_margin"
         android:layout_marginRight="@dimen/button_margin"
         android:layout_marginBottom="@dimen/button_margin_bottom"
@@ -61,7 +70,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:textColor="@android:color/white"
-        android:text="Quit"
+        android:text="@string/btn_quit"
         android:id="@+id/quit_button"
         android:layout_gravity="center_horizontal"
         android:layout_marginLeft="@dimen/button_margin"

@@ -6,6 +6,13 @@
     android:layout_gravity="bottom"
     android:background="@drawable/landscape">
 
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="75dp"
+        android:background="@drawable/logo"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp" />
 
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -22,7 +29,7 @@
             android:layout_width="@dimen/button_width"
             android:layout_height="fill_parent"
             android:textColor="@android:color/white"
-            android:text="Mail"
+            android:text="@string/btn_mail"
             android:layout_margin="@dimen/button_margin"
             android:id="@+id/mail_button"/>
 
@@ -30,7 +37,7 @@
             android:layout_width="@dimen/button_width"
             android:layout_height="fill_parent"
             android:textColor="@android:color/white"
-            android:text="Browser"
+            android:text="@string/btn_browser"
             android:layout_margin="@dimen/button_margin"
             android:id="@+id/browser_button"/>
 
@@ -38,7 +45,7 @@
             android:layout_width="@dimen/button_width"
             android:layout_height="fill_parent"
             android:textColor="@android:color/white"
-            android:text="Options"
+            android:text="@string/btn_options"
             android:layout_margin="@dimen/button_margin"
             android:id="@+id/options_button"/>
     </TableRow>
@@ -48,7 +55,7 @@
             android:layout_width="@dimen/button_width"
             android:layout_height="fill_parent"
             android:textColor="@android:color/white"
-            android:text="About"
+            android:text="@string/btn_about"
             android:layout_margin="@dimen/button_margin"
             android:id="@+id/about_button" />
 
@@ -56,16 +63,10 @@
             android:layout_width="@dimen/button_width"
             android:layout_height="fill_parent"
             android:textColor="@android:color/white"
-            android:text="Quit"
+            android:text="@string/btn_quit"
             android:layout_margin="@dimen/button_margin"
             android:id="@+id/quit_button"/>
 
-        <TextView
-            android:layout_width="@dimen/button_width"
-            android:layout_height="fill_parent"
-            android:text="v 1.0"
-            android:textColor="@android:color/white"
-            android:gravity="bottom|right" />
     </TableRow>
 
 </TableLayout>
