@@ -47,7 +47,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eros massa, dapibus in lorem sed, dapibus auctor leo. Duis nec porta felis, eget aliquam mi. Etiam sit amet tristique risus. Etiam lectus mi, finibus in ipsum non, convallis fermentum arcu. Mauris vel imperdiet orci, sed posuere arcu. Ut ac arcu magna. Sed vitae dapibus risus. Vestibulum sit amet lorem tortor. Proin malesuada ligula eget lectus tincidunt, vitae congue lorem pulvinar."
+        android:text="@string/about_text3"
         android:id="@+id/textView2"
         android:textColor="#FFFFFF"
         android:layout_below="@+id/textView"

@@ -47,47 +47,23 @@ public class MailActivity extends Activity {
 
     private void setupIntent() {
 
-      /*  anIntent.setType("text/plain");
-        String action = anIntent.getAction();
+        Intent anIntent = getIntent();
 
-        String recipient = null;
-        String subject = null;
-        String message = null;
+        String recipient = anIntent.getDataString();
 
-        if (anIntent.getExtras() != null) {
-            Log.i(Intro.TAG, "kazka turi");
+        if (recipient != null) {
+            if (recipient.contains("%40")) recipient = recipient.replace("%40", "@");
+            if (recipient.contains("mailto:")) recipient = recipient.replace("mailto:", "");
         }
 
-        if (anIntent.hasExtra(anIntent.EXTRA_EMAIL)) {
-            recipient = anIntent.getStringExtra(anIntent.EXTRA_EMAIL);
-            fldTO.setText(recipient);
-            Log.i(Intro.TAG, "recipient found: " + recipient);
-        }
-
-        if (anIntent.hasExtra(Intent.EXTRA_SUBJECT)) {
-            subject = anIntent.getStringExtra(Intent.EXTRA_SUBJECT);
-            fldSUBJECT.setText(subject);
-        }
-
-        if (anIntent.hasExtra(Intent.EXTRA_TEXT)) {
-            message = anIntent.getStringExtra(Intent.EXTRA_TEXT);
-            fldMESSAGE.setText(message);
-        }
-        Log.i(Intro.TAG, "Action: " + action);
-
-        if (recipient != null && subject != null & message != null)
-            sendMail(recipient, subject, message);*/
+        fldTO.setText(recipient);
+        Log.i(Intro.TAG, "Recipient found: " + recipient);
     }
 
     private void setupFields() {
         fldTO = (EditText) findViewById(R.id.editText3);
         fldSUBJECT = (EditText) findViewById(R.id.editText2);
         fldMESSAGE = (EditText) findViewById(R.id.editText4);
-
-        recipient = "";
-        text = "";
-        subject = "";
-
     }
 
     private void setupButtons() {
@@ -112,7 +88,12 @@ public class MailActivity extends Activity {
                 text = fldMESSAGE.getText().toString();
                 subject = fldSUBJECT.getText().toString();
 
-                sendMail(recipient, subject, text);
+                if (recipient.length() == 0)
+                    Toast.makeText(getApplicationContext(), "Empty email!", Toast.LENGTH_SHORT).show();
+                else if (!recipient.contains("@"))
+                    Toast.makeText(getApplicationContext(), "Not a valid email address", Toast.LENGTH_SHORT).show();
+                else
+                    sendMail(recipient, subject, text);
             }
         });
     }

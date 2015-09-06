@@ -6,6 +6,13 @@
     <string name="title_activity_about">AboutActivity</string>
     <string name="about_text">App created by Arnas Kromelis</string>
     <string name="about_text2">MOBI1-Y-A15</string>
+    <string name="about_text3">This applications was created for learning purposes while studying in
+        VIA University College, Mobile applications 1 course. It has basic functionality.
+        You can use it to send emails, or browse in the internet. To make it more customizable there is
+        an option to change the color of buttons and it will be saved in preferences. That means the
+    next time you will open this app the colors will be as the last time you left them. If you are
+    still reading this, that means I have no idea what to write more so that there would be more
+    text here. Have a nice day!</string>
     <string name="title_activity_options">OptionsActivity</string>
 
     <string name="options_color_prompt">Choose a main color:</string>

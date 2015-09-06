@@ -16,14 +16,24 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    android {
+        packagingOptions {
+            pickFirst 'META-INF/LICENSE.txt' // picks the JavaMail license file
+        }
+    }
+
 }
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:23.0.0'
-    compile files('libs/mail.jar')
-    compile files('libs/additionnal.jar')
-    compile files('libs/activation.jar')
+    compile 'com.sun.mail:android-mail:1.5.5-SNAPSHOT'
+    compile 'com.sun.mail:android-activation:1.5.5-SNAPSHOT'
 }
 
 repositories {
+    jcenter()
+    maven {
+        url "https://maven.java.net/content/groups/public/"
+    }
 }
