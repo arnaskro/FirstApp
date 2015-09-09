@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.*;
@@ -50,9 +51,6 @@ public class BrowserActivity extends Activity {
 
         // Setup intent
         setupIntent();
-
-        // Launch default site
-        goToWebsite(DEFAULT_SITE);
     }
 
     private void setupIntent() {
@@ -224,8 +222,10 @@ public class BrowserActivity extends Activity {
         super.onResume();
 
         SharedPreferences prefs = getSharedPreferences(PREFERENCES, MODE_PRIVATE);
-        goToWebsite(prefs.getString(PREF_URL, ""));
+        goToWebsite(prefs.getString(PREF_URL, DEFAULT_SITE));
 
+        // Setup intent
+        setupIntent();
     }
 
     protected void onPause() {
