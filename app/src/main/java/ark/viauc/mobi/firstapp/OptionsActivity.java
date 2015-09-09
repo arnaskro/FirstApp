@@ -11,7 +11,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.Spinner;
+import android.widget.Switch;
 
 public class OptionsActivity extends Activity {
 
@@ -19,6 +21,9 @@ public class OptionsActivity extends Activity {
     private Bundle myBundle;
     private static String ACTIVE_COLOR;
     private Button btnBack;
+    private Switch mail_switch;
+    private boolean USE_OUR_MAIL_CLIENT;
+    public static final String MAIL_OPTIONS = "MAIL_OPTIONS";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +38,41 @@ public class OptionsActivity extends Activity {
 
         // Setup spinner
         setup_spinner();
+
+        // Setup switch
+        setupSwitch();
+    }
+
+
+
+    private void setupSwitch() {
+        mail_switch = (Switch) findViewById(R.id.switch1);
+
+        SharedPreferences prefs = getSharedPreferences(Intro.PREFERENCES, MODE_PRIVATE);
+        USE_OUR_MAIL_CLIENT = prefs.getBoolean(MAIL_OPTIONS, false);
+
+        if(USE_OUR_MAIL_CLIENT)
+            mail_switch.setChecked(true);
+        else
+            mail_switch.setChecked(false);
+
+        mail_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    USE_OUR_MAIL_CLIENT = true;
+                } else {
+                    USE_OUR_MAIL_CLIENT = false;
+                }
+
+                SharedPreferences prefs = getSharedPreferences(Intro.PREFERENCES, MODE_PRIVATE);
+                SharedPreferences.Editor edit = prefs.edit();
+
+                edit.putBoolean(MAIL_OPTIONS, USE_OUR_MAIL_CLIENT);
+                edit.apply();
+            }
+        });
+
     }
 
     private void setup_bundle() {

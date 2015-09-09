@@ -42,5 +42,6 @@
     <string name="btn_options">Options</string>
     <string name="btn_about">About</string>
     <string name="btn_quit">Quit</string>
+    <string name="choose_mailing_option">Use our mail client:</string>
 
 </resources>

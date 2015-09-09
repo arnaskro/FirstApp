@@ -43,6 +43,7 @@ public class MailActivity extends Activity {
 
         // Setup intents
         setupIntent();
+
     }
 
     private void setupIntent() {
