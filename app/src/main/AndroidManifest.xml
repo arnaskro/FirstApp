@@ -38,7 +38,7 @@
             android:name=".BrowserActivity"
             android:label="@string/title_activity_browser"
             android:parentActivityName=".Intro"
-            android:configChanges="keyboardHidden|screenSize|orientation" >
+            android:configChanges="keyboardHidden|orientation" >
 
             <!-- - Handle web browsing -->
             <intent-filter>
