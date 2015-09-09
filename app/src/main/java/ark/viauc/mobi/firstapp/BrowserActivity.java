@@ -49,12 +49,8 @@ public class BrowserActivity extends Activity {
         // Setup intent
         setupIntent();
 
-
-        if (savedInstanceState == null) {
-            // Launch default site
-            goToWebsite(DEFAULT_SITE);
-        }
-
+        // Launch default site
+        goToWebsite(DEFAULT_SITE);
     }
 
     private void setupIntent() {
@@ -222,18 +218,6 @@ public class BrowserActivity extends Activity {
         }
     }
 
-    @Override
-    protected void onSaveInstanceState(Bundle outState )
-    {
-        super.onSaveInstanceState(outState);
-        wv.saveState(outState);
-    }
 
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState)
-    {
-        super.onRestoreInstanceState(savedInstanceState);
-        wv.restoreState(savedInstanceState);
-    }
 
 }
