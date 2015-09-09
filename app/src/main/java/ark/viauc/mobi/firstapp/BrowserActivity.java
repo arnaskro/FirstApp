@@ -15,6 +15,8 @@ import java.util.ArrayList;
 public class BrowserActivity extends Activity {
 
     private static final String DEFAULT_SITE = "http://kromelis.lt";
+    public static final String PREFERENCES = "PREFERENCES";
+    public static final String PREF_URL = "PREF_URL";
     private static String ACTIVE_COLOR;
     private WebView wv;
 
@@ -218,6 +220,23 @@ public class BrowserActivity extends Activity {
         }
     }
 
+    protected void onResume() {
+        super.onResume();
+
+        SharedPreferences prefs = getSharedPreferences(PREFERENCES, MODE_PRIVATE);
+        goToWebsite(prefs.getString(PREF_URL, ""));
+
+    }
+
+    protected void onPause() {
+        super.onPause();
+        field = (EditText) findViewById(R.id.editText);
+        String url = field.getText().toString();
+        SharedPreferences prefs = getSharedPreferences(PREFERENCES, MODE_PRIVATE);
+        SharedPreferences.Editor edit = prefs.edit();
+        edit.putString(PREF_URL, url);
+        edit.apply();
+    }
 
 
 }
