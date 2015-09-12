@@ -16,6 +16,7 @@ import javax.mail.internet.*;
 public class MailActivity extends Activity {
 
     private static String ACTIVE_COLOR;
+    private boolean OUR_MAIL_CLIENT;
     private Button btnBack, btnSend;
     private EditText fldTO, fldSUBJECT, fldMESSAGE;
     protected String recipient, subject, text;
@@ -32,6 +33,7 @@ public class MailActivity extends Activity {
 
         SharedPreferences prefs = getSharedPreferences(Intro.PREFERENCES, MODE_PRIVATE);
         ACTIVE_COLOR = prefs.getString(Intro.PREF_COLOR, Intro.COLOR_BLUE);
+        OUR_MAIL_CLIENT = prefs.getBoolean(OptionsActivity.MAIL_OPTIONS, false);
 
         context = this;
 
@@ -105,27 +107,40 @@ public class MailActivity extends Activity {
         Log.i(Intro.TAG, "Subject: " + subject);
         Log.i(Intro.TAG, "Text: " + text);
 
-        Properties props = new Properties();
-        props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.socketFactory.port", "465");
-        props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.port", "465");
+        if (OUR_MAIL_CLIENT) {
 
-        session = Session.getDefaultInstance(props, new Authenticator() {
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("sfirstapp@gmail.com", "spassword");
-            }
-        });
+            Properties props = new Properties();
+            props.put("mail.smtp.host", "smtp.gmail.com");
+            props.put("mail.smtp.socketFactory.port", "465");
+            props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+            props.put("mail.smtp.auth", "true");
+            props.put("mail.smtp.port", "465");
 
-        pdialog = ProgressDialog.show(context, "", "Sending Mail...", true);
+            session = Session.getDefaultInstance(props, new Authenticator() {
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication("sfirstapp@gmail.com", "spassword");
+                }
+            });
 
-        RetreiveFeedTask task = new RetreiveFeedTask();
-        task.execute();
+            pdialog = ProgressDialog.show(context, "", "Sending Mail...", true);
 
+            RetreiveFeedTask task = new RetreiveFeedTask();
+            task.execute();
+        } else {
+
+            Intent mailIntent = new Intent(Intent.ACTION_SEND);
+            mailIntent.setType("text/plain");
+            mailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] { recipient });
+            mailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
+            mailIntent.putExtra(Intent.EXTRA_TEXT, text);
+
+            startActivity(Intent.createChooser(mailIntent, "Send Email"));
+
+            fldTO.setText("");;
+            fldSUBJECT.setText("");
+            fldMESSAGE.setText("");
+        }
     }
-
-
 
     public void changeButtonBackground(Button target) {
         switch (ACTIVE_COLOR) {

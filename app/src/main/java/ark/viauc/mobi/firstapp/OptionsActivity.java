@@ -39,7 +39,7 @@ public class OptionsActivity extends Activity {
         // Setup spinner
         setup_spinner();
 
-        // Setup switch
+        // Setup mail switch
         setupSwitch();
     }
 
